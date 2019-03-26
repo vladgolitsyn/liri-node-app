@@ -7,8 +7,11 @@ var axios = require('axios');
 // requiring moment for date conversions
 var moment = require('moment');
 
+// requiring Spotify NPM package  
+var Spotify = require('node-spotify-api');
+
 // adding per homework instructions
-var keys = require("./keys.js");
+// var keys = require("./keys.js"); // using reference in NPM instead 
 
 // adding two variables to represent command line user inputs
 var requestType = process.argv[2];
@@ -32,6 +35,10 @@ function concertInfo() {
                     '\n----------------------------------'
                 );
             }
+
+        })
+        .catch(err => {
+            console.log('Error occurred: ' + err);
         });
 }
 
@@ -53,15 +60,17 @@ function movieInfo() {
                 '\nLanguage: ' + response.data.Language +
                 '\nPlot: ' + response.data.Plot +
                 '\nActors: ' + response.data.Actors
-            );
+            )
+        })
+        .catch(err => {
+            console.log('Error occurred: ' + err);
         });
 }
 
 // Spotify API logic
 function songInfo() {
-    var Spotify = require('node-spotify-api');
     var spotify = new Spotify({
-        id: a8a9afb8fc934ab597597e26ae837470,
+        id: a8a9afb8fc934ab597597e26ae837470, // CLI request error key "is not defined" even though I registered the app with Spotify
         secret: f23807be2c6341c588cf9472a516e08b
     });
 
@@ -77,6 +86,22 @@ function songInfo() {
     });
 }
 
+// Do What is Says Function
+function doWhatItSays() {
+    fs.readFile("random.txt", function (data) {
+        console.log(data);
+
+        var dataArr = data.split(",");
+
+        if (dataArr.length === 2) {
+            pick(dataArr[0], dataArr[1]);
+        } else if (dataArr.length === 1) {
+            pick(dataArr[0]);
+        }
+    });
+};
+
+
 
 // if statement which determines which function to invoke based on the requestType entered by user
 if (requestType == 'concert-this') {
@@ -85,6 +110,8 @@ if (requestType == 'concert-this') {
     movieInfo();
 } else if (requestType == 'spotify-this-song') {
     songInfo();
+} else if (requestType == 'do-what-it-says') {
+    doWhatItSays();
 } else {
     console.log('you need to submit the correct request type, concert-this, movie-this, or spotify-this-song')
 }
