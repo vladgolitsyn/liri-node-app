@@ -1,17 +1,24 @@
 // adding per homework instructions
 require("dotenv").config();
 
+// adding per homework instructions
+var keys = require("./keys.js"); // using reference in Spotify logic instead 
+
 // requiring axios for API calls
 var axios = require('axios');
 
 // requiring moment for date conversions
 var moment = require('moment');
 
+// requiring fs
+var fs = require('fs');
+
 // requiring Spotify NPM package  
 var Spotify = require('node-spotify-api');
-
-// adding per homework instructions
-// var keys = require("./keys.js"); // using reference in NPM instead 
+var spotify = new Spotify({
+    id: keys.spotify.id, 
+    secret: keys.spotify.secret
+})
 
 // adding two variables to represent command line user inputs
 var requestType = process.argv[2];
@@ -69,10 +76,7 @@ function movieInfo() {
 
 // Spotify API logic
 function songInfo() {
-    var spotify = new Spotify({
-        id: a8a9afb8fc934ab597597e26ae837470, // CLI request error key "is not defined" even though I registered the app with Spotify
-        secret: f23807be2c6341c588cf9472a516e08b
-    });
+
 
     spotify.search({
         type: 'track',
@@ -88,15 +92,19 @@ function songInfo() {
 
 // Do What is Says Function
 function doWhatItSays() {
-    fs.readFile("random.txt", function (data) {
+    fs.readFile("./random.txt", "utf-8", function (err, data) {
+
+        if (err) {
+            return console.log('Error occurred: ' + err);
+        }
+
         console.log(data);
 
         var dataArr = data.split(",");
 
-        if (dataArr.length === 2) {
-            pick(dataArr[0], dataArr[1]);
-        } else if (dataArr.length === 1) {
-            pick(dataArr[0]);
+        if (dataArr[0] = 'spotify-this-song') {
+            requestVal = dataArr[1];
+            songInfo()
         }
     });
 };
