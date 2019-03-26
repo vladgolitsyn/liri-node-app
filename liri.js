@@ -31,7 +31,7 @@ function concertInfo() {
                 console.log(
                     'Venue: ' + response.data[i].venue.name +
                     '\nLocation: ' + response.data[i].venue.city + ', ' + response.data[i].venue.country +
-                    '\nDate & Time: ' + response.data[i].datetime + // need to format using moment.js
+                    '\nDate & Time: ' + moment(response.data[i].datetime).format("MM/DD/YYYY") + 
                     '\n----------------------------------'
                 );
             }
