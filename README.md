@@ -18,4 +18,21 @@ In order for the liri-node-app javascript logic to function, the following NPM p
 
 A package.json file was created and stores all of these NPM package dependencies.
 
+#### Feature Summary
+
+All javascript code required to execute the application logic is stored in the liri.js file.
+
+##### Concert Info
+A user has to provide the following terminal input in order to retreive the concert information for a particular band:
+"node" + "liri.js" + "concert-this" + "*band name*"; for example, "node liri.js concert-this metallica".  Example output:
+
+
+##### Movie Info
+A user has to provide the following terminal input in order to retreive information for a particular movie:
+"node" + "liri.js" + "movie-this" + "*movie name*"; for example, "node liri.js moview-this goodfellas".  Example output:
+
+
+##### Song and Artist Info
+A user has to provide the following terminal input in order to retreive artist and song information basedo na apartticular song input:
+"node" + "liri.js" + spotify-this-song" + "*song name*"; for example, "node liri.js spotify-this-song momento".  Example output:
 
