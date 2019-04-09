@@ -16,7 +16,7 @@ var fs = require('fs');
 // requiring Spotify NPM package  
 var Spotify = require('node-spotify-api');
 var spotify = new Spotify({
-    id: keys.spotify.id, 
+    id: keys.spotify.id,
     secret: keys.spotify.secret
 })
 
@@ -38,7 +38,7 @@ function concertInfo() {
                 console.log(
                     'Venue: ' + response.data[i].venue.name +
                     '\nLocation: ' + response.data[i].venue.city + ', ' + response.data[i].venue.country +
-                    '\nDate & Time: ' + moment(response.data[i].datetime).format("MM/DD/YYYY") + 
+                    '\nDate & Time: ' + moment(response.data[i].datetime).format("MM/DD/YYYY") +
                     '\n----------------------------------'
                 );
             }
