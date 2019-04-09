@@ -25,12 +25,12 @@ All javascript code required to execute the application logic is stored in the l
 ##### Concert Info
 A user has to provide the following terminal input in order to retreive the concert information for a particular band:
 "node" + "liri.js" + "concert-this" + "*band name*"; for example, "node liri.js concert-this metallica".  Example output:
-
+![Concert Sample](/images/concert_sample.jpg)
 
 ##### Movie Info
 A user has to provide the following terminal input in order to retreive information for a particular movie:
 "node" + "liri.js" + "movie-this" + "*movie name*"; for example, "node liri.js moview-this goodfellas".  Example output:
-
+![Movie Sample](/images/movie_sample.jpg)
 
 ##### Song and Artist Info
 A user has to provide the following terminal input in order to retreive artist and song information basedo na apartticular song input:
